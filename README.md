@@ -4,5 +4,9 @@
 Jhon M. Schukman, P. Joser Atauchi, & A. Townsend Peterson
 
 ##### Include
-// Export NDVI index from Google Earth Engine
-// 
+Export NDVI index (raster file [.tif]) from Google Earth Engine.
+
+`
+Code: 01-
+`
+
