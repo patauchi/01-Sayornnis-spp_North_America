@@ -1,0 +1,41 @@
+// Climate and vegetation change: Geographic displacement of phoebes
+// (Sayornis spp.) in the central Great Plains of North America
+// 2023
+
+// 
+// geometry = "study-area";
+
+// get landsat 4 NDVI - 32 Days Compositions
+// var dataset = ee.ImageCollection('LANDSAT/LT04/C01/T1_32DAY_NDVI')
+//                  .filterBounds(geometry)
+//                  .filterDate('1984-01-01', '1990-01-31') // 1982-0101 - 1993-12-31
+//                  .map(function(image){return image.clip(geometry)});
+
+
+// get landsat 5 NDVI - 32 Days Compositions
+// var dataset = ee.ImageCollection('LANDSAT/LT05/C01/T1_32DAY_NDVI')
+//                  .filterBounds(geometry)
+//                  .filterDate('1991-01-31', '2000-01-31') // 1984 - 2021
+//                  .map(function(image){return image.clip(geometry)});
+                  
+// get landsat 7 NDVI - 32 Days Composition
+// var dataset = ee.ImageCollection('LANDSAT/LE07/C01/T1_32DAY_NDVI')
+//                   .filterBounds(geometry)
+//                   .filterDate('2001-01-01', '2021-11-17')  //1999 - present
+//                   .map(function(image){return image.clip(geometry)});
+                  
+var CompleteImgSet = dataset.select('NDVI');
+
+print(CompleteImgSet)
+
+var colorizedVis = {
+  min: 0.0,
+  max: 1.0,
+  palette: [
+    'FFFFFF', 'CE7E45', 'DF923D', 'F1B555', 'FCD163', '99B718', '74A901',
+    '66A000', '529400', '3E8601', '207401', '056201', '004C00', '023B01',
+    '012E01', '011D01', '011301'
+  ],
+};
+
+Map.addLayer(CompleteImgSet, colorizedVis, 'Colorized');
